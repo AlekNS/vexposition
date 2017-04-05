@@ -1,0 +1,45 @@
+<div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Sign In</h4>
+            </div>
+            <div class="modal-body">
+                <display-alert-messages messages="errors" type="danger"></display-alert-messages>
+                <form id="loginform" name="form" class="form-horizontal" role="form" data-ng-submit="onSubmitForm(form)">
+                    <div style="margin-bottom: 25px" class="input-group" data-ng-class="form.email.$dirty && form.email.$invalid && 'has-error'">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input required id="login-username" type="email" class="form-control" name="email" value="" data-ng-model="model.email" placeholder="email">
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group" data-ng-class="form.password.$dirty && form.password.$invalid && 'has-error'">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input required id="login-password" type="password" class="form-control" name="password" data-ng-model="model.password" placeholder="password">
+                    </div>
+                    <div class="input-group">
+                        <div class="checkbox">
+                            <label>
+                                <input id="login-remember" type="checkbox" name="remember" data-ng-model="model.remember" value="1"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div style="margin-top:10px" class="form-group">
+                        <div class="col-sm-12 controls">
+                            <button id="btn-login" type="submit" class="btn btn-block btn-success">Login</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                Don't have an account?
+                                <a href="" data-ng-click="onSignUpClick()">
+                                    Sign Up Here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

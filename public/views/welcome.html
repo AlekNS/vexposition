@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="text-center">World Events</h3>
+      <h5 class="text-center">Select any of events on this map, to book your place</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <map events="$ctrl.events" on-event-click="$ctrl.onEventClick(event)"></map>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+              <div class="col-sm-6">
+                <div data-ng-show="$ctrl.selectedEvent">
+                  Location: <strong class="strong">{{ $ctrl.selectedEvent.location_city }}</strong><br>
+                  {{ $ctrl.selectedEvent.location_address }}
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div data-ng-show="$ctrl.selectedEvent">
+                  Event Date: from {{ $ctrl.selectedEvent.start_date }}
+                    to {{ $ctrl.selectedEvent.end_date }} 
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <a class="btn btn-block btn-primary" data-ng-class="{disabled: !$ctrl.selectedEvent}"
+                    data-ng-href="#!/event/{{$ctrl.selectedEvent.id}}/stand">Book your place</a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

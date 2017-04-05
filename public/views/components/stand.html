@@ -1,0 +1,17 @@
+<div class="col-sm-3">
+<div class="panel panel-default">
+ <div class="panel-body stand">
+  <div class="stand-collection-image">
+    <img alt="Logo Image" data-ng-src="{{$ctrl.stand.price ? $ctrl.freeStandUrl : $ctrl.stand.img_url}}"></img>
+  </div>
+  <div class="stand-price" data-ng-show="$ctrl.stand.price">
+    <span>{{$ctrl.stand.price}}</span>
+  </div>
+  <div class="text-center">{{$ctrl.stand.name}}</div>
+  <div class="text-center">
+    <button class="btn btn-block" data-ng-class="{'btn-primary': !$ctrl.stand.price, 'btn-success': $ctrl.stand.price}"
+      data-ng-click="$ctrl.onButtonClick({stand: $ctrl.stand})">{{ $ctrl.stand.price ? 'Book Now' : 'View' }}</button>
+  </div>
+ </div>
+</div>
+</div>

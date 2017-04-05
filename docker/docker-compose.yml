@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  vexposition_database_svc:
+    image: mysql:8.0
+    container_name: vexposition_database
+    hostname: db.vexposition
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./db/dumps:/app-db-dumps
+    environment:
+      MYSQL_DATABASE: vexposition
+      MYSQL_USER: vexposition
+      MYSQL_PASSWORD: vexposition
+      MYSQL_ROOT_PASSWORD: root
+    labels:
+      - org.vexposition.environment:develop
+
+  vexposition_webapp_svc:
+    build: ./app
+    container_name: vexposition_webapp
+    domainname: vexposition.net
+    hostname: webapp.vexposition
+    restart: always
+    environment:
+      APACHE_RUN_USER: user
+      APACHE_RUN_GROUP: user
+      APACHE_LOG_DIR: /var/log/apache2
+      APACHE_RUN_DIR: /var/run
+    volumes:
+      - "..:/var/www/html"
+    ports:
+      - "80:80"
+    working_dir: /var/www/html
+    external_links:
+      - "vexposition_mysql_database"
+    labels:
+      - org.vexposition.environment:develop
+    links:
+      - vexposition_database_svc
+    depends_on:
+      - vexposition_database_svc

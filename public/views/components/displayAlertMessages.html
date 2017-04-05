@@ -1,0 +1,5 @@
+<div class="alert" data-ng-if="$ctrl.messages.length > 0" data-ng-class="'alert-' + $ctrl.type">
+    <ul>
+        <li data-ng-repeat="message in $ctrl.messages">{{ message }}</li>
+    </ul>
+</div>

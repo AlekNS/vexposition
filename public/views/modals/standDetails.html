@@ -1,0 +1,36 @@
+<div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Stand: {{ ::stand.name }}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 stand-image">
+                        <img alt="Logo Image" data-ng-src="{{ ::stand.img_url }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>Contacts</h4>
+                        <address>
+                            <strong>{{ ::stand.owner.name }}</strong><br>
+                            {{ ::stand.owner.address }}<br>
+                            <a href="mailto:{{ ::stand.owner.email }}">{{ ::stand.owner.email }}</a><br>
+                            <abbr title="Phone">P:</abbr> {{ ::stand.owner.phone }}
+                        </address>
+                    </div>
+                </div>
+                <div class="list-group">
+                  <a class="list-group-item active">Documents</a>
+                  <a data-ng-repeat="file in ::stand.owner.documents track by file.url" href="{{ ::file.url }}" 
+                      class="list-group-item">{{ $index + 1 }}. "{{ ::stand.owner.name }}" Document</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

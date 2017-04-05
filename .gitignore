@@ -1,0 +1,16 @@
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+docs/backend/phpdoc-cache*
+/public/public/
+!/public/public/files/file*.pdf
+!/public/public/images/logo*.jpg
+.idea
+.vagrant
+

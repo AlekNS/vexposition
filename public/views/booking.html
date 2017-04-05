@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="text-center">Welcome to {{$ctrl.event.name}}</h3>
+      <h5 class="text-center">{{$ctrl.stand.name}} Stand Booking</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Company Details (all fields required)</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" name="form" data-ng-submit="$ctrl.onSubmitForm(form)">
+                          <div class="form-group" data-ng-class="form.name.$dirty && form.name.$invalid && 'has-error'">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" required class="form-control" id="name" name="name" ng-model="$ctrl.model.name" placeholder="Name">
+                            </div>
+                          </div>
+                          <div class="form-group" data-ng-class="form.address.$dirty && form.address.$invalid && 'has-error'">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Address</label>
+                            <div class="col-sm-9">
+                              <input type="text" required class="form-control" id="address" name="address" ng-model="$ctrl.model.address" placeholder="Address">
+                            </div>
+                          </div>
+                          <div class="form-group" data-ng-class="form.phone.$dirty && form.phone.$invalid && 'has-error'">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Phone</label>
+                            <div class="col-sm-9">
+                              <input type="tel" required class="form-control" id="phone" name="phone" ng-model="$ctrl.model.phone" placeholder="Phone">
+                            </div>
+                          </div>
+                          <div class="form-group" data-ng-class="form.email.$dirty && form.email.$invalid && 'has-error'">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                              <input type="email" required class="form-control" id="email" name="email" ng-model="$ctrl.model.email" placeholder="Email">
+                            </div>
+                          </div>
+                          <div class="form-group" data-ng-class="form.admin_email.$dirty && form.admin_email.$invalid && 'has-error'">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Admin. Email</label>
+                            <div class="col-sm-9">
+                              <input type="email" required class="form-control" id="admin-email" name="admin_email" ng-model="$ctrl.model.admin_email" placeholder="Administrator Email">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Logo Image</label>
+                            <div class="col-sm-9">
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <div class="button" required ngf-select="$ctrl.uploadLogo($ctrl.logoFile)" ng-model="$ctrl.logoFile" name="logoFile" ngf-pattern="'image/*'"
+                                    ngf-accept="'image/*'" ngf-max-size="1MB" ngf-min-height="100"><button class="btn btn-sm btn-warning">Select Logo</button></div>
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                  <img style="border: 1px lightgray solid;max-width:140px;max-height:80px" ngf-thumbnail="$ctrl.logoFile">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-3 control-label">Document</label>
+                            <div class="col-sm-9">
+                              <div class="button" required ngf-select="$ctrl.uploadFile($ctrl.docFile)" ng-model="$ctrl.docFile" name="docFile" ngf-pattern="'*/*'"
+                                ngf-accept="'*/*'" ngf-max-size="5MB"><button class="btn btn-sm btn-warning">Select File</button></div>
+                              <p class="help-block">File: {{ $ctrl.docFile.name }}</p>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <hr>
+                            <div class="col-sm-offset-3 col-sm-3">
+                              <a data-ng-href="#!/event/{{$ctrl.eventId}}/stand" class="btn btn-default">Go Back</a>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                              <button type="submit" class="btn btn-primary">Confirm Reservation</button>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

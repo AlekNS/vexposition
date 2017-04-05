@@ -1,0 +1,45 @@
+.view-animate.ng-enter {
+  transition: 400ms linear all;
+
+  display: block;
+  opacity: 0.3;
+
+  &.ng-enter-active {
+    opacity: 1;
+  }
+}
+
+div.stand-image {
+    height: 300px;
+    overflow: hidden;
+    img {
+        display: block;
+        margin: 0 auto;
+        height: 100%;
+    }
+}
+
+div.stand-price {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 50px;
+
+    span {
+        padding: 10px;
+        margin: 0;
+        background-color: rgba(255, 255, 255, 0.6);
+        box-shadow: gray 0 0 8px;
+    }
+}
+
+div.stand-collection-image {
+    height: 100px;
+    overflow: hidden;
+    img {
+        display: block;
+        margin: 0 auto;
+        height: 100%;
+    }
+}

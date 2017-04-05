@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3 class="text-center">Welcome to {{$ctrl.event.name || 'Event'}}</h3>
+      <h5 class="text-center">Select Stand to Book your place</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+         <stand-collection stands="$ctrl.stands" on-button-click="$ctrl.onStandClick(stand)"></stand-collection>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <a data-ng-href="#!/" class="btn btn-default">Go Back</a>
+    </div>
+  </div>
+</div>
+

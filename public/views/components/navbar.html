@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#!/" data-ng-bind="::$root.getAppConfig('appName')"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <ul class="nav navbar-nav" data-ng-if="$ctrl.breadcrumbs.length > 0">
+                <li data-ng-repeat="b in $ctrl.breadcrumbs"><a href="{{b.url}}">/ {{b.name}}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li data-ng-if="$root.isAuth()" class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span data-ng-bind="$root.getUser('name')"></span> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#/logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                              <input type="hidden" name="_token" data-ng-value="::$root.getCsrfToken()">
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</nav>
