@@ -67,7 +67,15 @@ abstract class ResourceController extends Controller
     protected function baseIndex(Request $request, $query)
     {
         if (in_array($request->get('sort'), array_keys($this->getValidationRules()))) {
-            $query->orderBy($request->get('sort'), $request->get('order', 'asc'));
+            $sortColumn = $request->get('sort');
+            $sortDirection = $request->get('order', 'desc') == 'desc' ? 'desc' : 'asc';
+        } else {
+            $sortColumn = array_first(array_keys($this->getValidationRules()));
+            $sortDirection = 'asc';
+        }
+
+        if (!empty($sortColumn)) {
+            $query->orderBy($sortColumn, $sortDirection);
         }
 
         $request->offsetSet('limit', $request->get('limit', 10));

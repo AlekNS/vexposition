@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:7.1.4-apache
 
 MAINTAINER Alexander Sedelnikov (alexander.sedelnikov@ymail.com)
 

@@ -32,7 +32,7 @@ class StandResourceTest extends TestCase
 
     protected function getSingleStand()
     {
-        $stand = Stand::with('companies')->first();
+        $stand = Stand::has('companies')->first();
         return $this->get('/api/resource/event/' . $stand->event_id . '/stand/' . $stand->id)
             ->assertStatus(200)->decodeResponseJson();
     }

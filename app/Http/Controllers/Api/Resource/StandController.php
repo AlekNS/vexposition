@@ -17,8 +17,8 @@ class StandController extends ResourceController
     protected function getValidationRules()
     {
         return [
-            'event_id' => 'required|integer',
             'name' => 'required|string',
+            'event_id' => 'required|integer',
             'img_url' => 'required|string',
             'price_usd' => 'required|numeric',
             'description' => 'required|string',

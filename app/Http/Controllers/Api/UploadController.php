@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
  */
 class UploadController extends Controller
 {
-    public function postUploadImage($uploadType, Request $request)
+    public function postUploadImage(string $uploadType, Request $request)
     {
         // @TODO: Add subfolders or move it to the cloud storage.
         if ($request->file('file')) {

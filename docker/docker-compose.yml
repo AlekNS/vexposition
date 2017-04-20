@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   vexposition_database_svc:
@@ -26,6 +26,8 @@ services:
     hostname: webapp.vexposition
     restart: always
     environment:
+      XDEBUG_HOST: "${XDEBUG_HOST:-172.17.0.1}"
+      XDEBUG_PORT: "${XDEBUG_PORT:-9000}"
       APACHE_RUN_USER: user
       APACHE_RUN_GROUP: user
       APACHE_LOG_DIR: /var/log/apache2

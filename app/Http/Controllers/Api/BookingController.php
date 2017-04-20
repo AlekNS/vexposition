@@ -27,34 +27,28 @@ class BookingController extends Controller
             'admin_email' => 'required|string', // should be email
         ]);
 
-        $company = null;
-        $transaction = false;
-
         // Critical concurrent part
-        try {
-            \DB::beginTransaction();
-            $transaction = true;
+        $company = \DB::transaction(function () use ($standId, $request) {
             $stand = Stand::findOrFail($standId);
 
             // If stand is busy
             if ($stand->companies()->count()) {
-                return response()->json([
-                    'status' => 'invalid',
-                    'error' => 'This stand already booked!'
-                ], 403);
+                return null;
             }
 
             $company = Company::create($request->all());
             $stand->companies()->attach($company, [
                 'file_url' => $request->get('file_url')
             ]);
-            \DB::commit();
-            $transaction = false;
-        } finally {
-            if ($transaction) {
-                \DB::rollBack();
-                $transaction = null;
-            }
+
+            return $company;
+        });
+
+        if (!$company) {
+            return response()->json([
+                'status' => 'invalid',
+                'error' => 'This stand already booked!'
+            ], 403);
         }
 
         return response()->json($company);
